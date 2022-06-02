@@ -2,7 +2,7 @@
 
 [Fountain Partners API (PAPI)](https://partners.fountain.com/) ruby client. Helps get started quickly interfacing with PAPI. Today, the library allows for creating partner statuses for an applicant.
 
-In the future, this library is intended be at feature-parity with PAPI operation.
+In the future, this library is intended be at feature-parity with PAPI operations.
 
 ## Installation
 
@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Configuration
 
-Create an initializer in `config/initializers/fountain-papi.rb` with your Partner ID and API Key:
+Create an initializer in `config/initializers/fountain_papi.rb` with your Partner ID and API Key:
 
 ```ruby
 Fountain::Papi.configure do |config|
@@ -30,12 +30,14 @@ Fountain::Papi.configure do |config|
   config.partner_id = "3870fc40-d0f7-449e-8152-2a741ef3b301" # YOUR PARTNER ID HERE
 
   # Additional options:
-  config.sandbox = true
-  config.version = 1
+  # config.sandbox = true
+  # config.version = 1
 end
 ```
 
-If you do not have either of those keys, please reach out to your Fountain partner representative. When you're ready to update your partner to production, set `config.sandbox = false` in the above configuration.
+If you do not have either of those keys, please reach out to your Fountain partner representative. 
+
+When you're ready to update your partner to production, set `config.sandbox = false` in the above configuration.
 
 ## Usage
 
@@ -63,7 +65,7 @@ result.url
 ```
 
 options for `status` param are:
- - `incomplete
+ - `incomplete`
  - `in_progress`
  - `pending_action`
  - `completed`
@@ -76,7 +78,7 @@ Fountain::Papi.create_status(
   applicant_id: "231ea206-4d6e-4d7c-80d0-81dff956a197",
   status: "completed",
   account_option: "report_type_1",
-  category: "string"
+  category: "string",
   link_title: "Our report results",
   status_type: "foobar",
   title: "Great Title",
@@ -105,7 +107,7 @@ URL that can be clicked on from the applicant's status label. Useful for viewing
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `bundle exec rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
