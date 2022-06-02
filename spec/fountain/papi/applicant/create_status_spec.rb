@@ -2,10 +2,6 @@ require "spec_helper"
 
 describe Fountain::Papi::Applicant::CreateStatus do
   describe "#call" do
-    let(:status_response) do
-      File.read("./spec/fixtures/partner_status.json")
-    end
-
     let(:params) do
       {
         applicant_id: "45243c79-981a-4b5c-9c24-117381aabc1b",
@@ -19,7 +15,7 @@ describe Fountain::Papi::Applicant::CreateStatus do
     before do
       stub_request(:post, /applicants\/#{params[:applicant_id]}\/status/).
         to_return(
-          body: status_response,
+          body: File.read("./spec/fixtures/partner_status.json"),
           status: 201
         )
     end
@@ -70,6 +66,20 @@ describe Fountain::Papi::Applicant::CreateStatus do
 
       it "raises an error" do
         expect { subject }.to raise_error(Dry::Struct::Error, /:status is missing/)
+      end
+    end
+
+    context "when an API error occurs" do
+      before do
+        stub_request(:post, /applicants\/#{params[:applicant_id]}\/status/).
+          to_return(
+            body: File.read("./spec/fixtures/error.json"),
+            status: 400
+          )
+      end
+
+      it "raises an error" do
+        expect { subject }.to raise_error(Fountain::Papi::Error, /Bad Request/)
       end
     end
   end
