@@ -1,0 +1,20 @@
+{
+  "partner_status": {
+    "external_id": "b87ab326-ee84-40aa-a28e-9d520cfeaca8",
+    "category": null,
+    "status": "completed",
+    "title": "Our new title",
+    "link_title": "Fountain.com",
+    "status_type": null,
+    "url": "https://www.fountain.com",
+    "show_redo": false,
+    "partner_option": null,
+    "partner": {
+      "id": "3295521c-60aa-43cb-aa12-12d662d6e473",
+      "name": "Partner Name"
+    },
+    "color": "green",
+    "display_status": "[Partner Name] Completed",
+    "display_title": "[Partner Name] Our new title"
+  }
+}
