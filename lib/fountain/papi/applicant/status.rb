@@ -21,7 +21,7 @@ module Fountain
         attribute? :display_status, Types::Strict::String
         attribute? :display_title, Types::Strict::String
         attribute? :external_id, Types::UUID
-        attribute? :show_redo, Types::Params::Bool
+        attribute? :show_redo, Types::Params::Bool.optional
         attribute? :status_type, Types::Strict::String.optional
       end
     end

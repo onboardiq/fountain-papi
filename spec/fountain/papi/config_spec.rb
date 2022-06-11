@@ -46,17 +46,6 @@ describe Fountain::Papi::Config do
     expect(Fountain::Papi.config.headers).to include("Content-Type" => "application/json", "X-ACCESS-TOKEN" => api_key)
   end
 
-  context "when sandbox is false" do
-    it "returns the production base_uri" do
-      Fountain::Papi.configure do |c|
-        c.partner_id = partner_id
-        c.sandbox = false
-      end
-
-      expect(Fountain::Papi.config.base_uri).to eq("https://partners.fountain.com/v1/partners/#{partner_id}")
-    end
-  end
-
   context "when no version specified" do
     it "defaults to version 1" do
       expect(described_class.new.version).to eq(1)

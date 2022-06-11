@@ -14,8 +14,9 @@ module Fountain
 
         def call
           response = Client.post(
-            "/applicants/#{status.applicant_id}/status",
+            "#{Fountain::Papi.config.base_uri}/applicants/#{status.applicant_id}/status",
             body: { applicant: { partner_status: status } }.to_json,
+            headers: Fountain::Papi.config.headers
           )
 
           raise Fountain::Papi::Error.new(response) unless response.success?
