@@ -5,18 +5,18 @@ module Fountain
       attr_accessor :partner_id
       attr_accessor :sandbox
       attr_accessor :version
+      attr_accessor :base_domain
 
       def initialize
         @api_key = nil    # Partner API Key
         @partner_id = nil # Parter Identifier
         @sandbox = true   # Default to sandbox
         @version = 1      # API version
+        @base_domain = "https://partners-sandbox.fountain.com" # Default to sandbox base domain
       end
 
       def base_uri
-        return "https://partners.fountain.com/v#{version}/partners/#{partner_id}" unless sandbox
-
-        "https://partners-sandbox.fountain.com/v#{version}/partners/#{partner_id}"
+        "#{base_domain}/v#{version}/partners/#{partner_id}"
       end
 
       def headers

@@ -24,7 +24,7 @@ describe Fountain::Papi::Applicant::CreateStatus do
       subject
 
       expect(
-        a_request(:post, "#{Fountain::Papi.config.base_uri}applicants/45243c79-981a-4b5c-9c24-117381aabc1b/status")
+        a_request(:post, "#{Fountain::Papi.config.base_uri}/applicants/45243c79-981a-4b5c-9c24-117381aabc1b/status")
       ).to have_been_made
     end
 
