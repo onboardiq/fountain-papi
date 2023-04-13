@@ -47,6 +47,30 @@ describe Fountain::Papi::Applicant::CreateStatus do
       expect(result.url).to eq("https://www.fountain.com")
     end
 
+    context "when a partner_id is provided" do
+      let(:new_partner_id) { SecureRandom.uuid }
+      let(:params) do
+        {
+          applicant_id: "45243c79-981a-4b5c-9c24-117381aabc1b",
+          status: "completed",
+          title: "Our new title",
+          partner_id: new_partner_id
+        }
+      end
+
+      it "overrides the parter_id in the base_uri" do
+        subject
+
+        base_domain = Fountain::Papi.config.base_domain
+        version = Fountain::Papi.config.version
+        base_uri = "#{base_domain}/v#{version}/partners/#{new_partner_id}"
+
+        expect(
+          a_request(:post, "#{base_uri}/applicants/45243c79-981a-4b5c-9c24-117381aabc1b/status")
+        ).to have_been_made
+      end
+    end
+
     context "when missing applicant_id" do
       before { params.delete(:applicant_id) }
 

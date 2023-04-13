@@ -13,8 +13,8 @@ module Fountain
         @base_domain = "https://partners-sandbox.fountain.com" # Default to sandbox base domain
       end
 
-      def base_uri
-        "#{base_domain}/v#{version}/partners/#{partner_id}"
+      def base_uri(override_partner_id: nil)
+        "#{base_domain}/v#{version}/partners/#{override_partner_id || partner_id}"
       end
 
       def headers
