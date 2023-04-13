@@ -1,11 +1,9 @@
+# frozen_string_literal: true
+
 module Fountain
   module Papi
     class Config
-      attr_accessor :api_key
-      attr_accessor :partner_id
-      attr_accessor :sandbox
-      attr_accessor :version
-      attr_accessor :base_domain
+      attr_accessor :api_key, :partner_id, :sandbox, :version, :base_domain
 
       def initialize
         @api_key = nil    # Partner API Key

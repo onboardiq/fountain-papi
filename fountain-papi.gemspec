@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "dry-struct", "~> 1.4"
   spec.add_dependency "httparty", "~> 0.20.0"
 
-  spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "pry"
+  spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "webmock"
 end

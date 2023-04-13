@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Fountain
   module Papi
     def self.create_status(params)
