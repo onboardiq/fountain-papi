@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 describe Fountain::Papi::Config do
@@ -58,4 +60,3 @@ describe Fountain::Papi::Config do
     end
   end
 end
-

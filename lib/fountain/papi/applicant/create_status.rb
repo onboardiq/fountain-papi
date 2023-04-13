@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Fountain
   module Papi
     def self.create_status(params)
@@ -19,14 +21,14 @@ module Fountain
             headers: Fountain::Papi.config.headers
           )
 
-          raise Fountain::Papi::Error.new(response) unless response.success?
+          raise Fountain::Papi::Error, response unless response.success?
 
           created_status(response)
         end
 
         def created_status(response)
-          result_status = response["partner_status"].
-            merge(applicant_id: status.applicant_id)
+          result_status = response["partner_status"]
+                          .merge(applicant_id: status.applicant_id)
 
           Fountain::Papi::Applicant::Status.new(result_status)
         end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 describe Fountain::Papi::Applicant::CreateStatus do
@@ -13,8 +15,8 @@ describe Fountain::Papi::Applicant::CreateStatus do
     subject(:result) { Fountain::Papi.create_status(**params) }
 
     before do
-      stub_request(:post, /applicants\/#{params[:applicant_id]}\/status/).
-        to_return(
+      stub_request(:post, %r{applicants/#{params[:applicant_id]}/status})
+        .to_return(
           body: File.read("./spec/fixtures/partner_status.json"),
           status: 201
         )
@@ -71,8 +73,8 @@ describe Fountain::Papi::Applicant::CreateStatus do
 
     context "when an API error occurs" do
       before do
-        stub_request(:post, /applicants\/#{params[:applicant_id]}\/status/).
-          to_return(
+        stub_request(:post, %r{applicants/#{params[:applicant_id]}/status})
+          .to_return(
             body: File.read("./spec/fixtures/error.json"),
             status: 400
           )
