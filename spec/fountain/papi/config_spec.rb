@@ -60,4 +60,3 @@ describe Fountain::Papi::Config do
     end
   end
 end
-
