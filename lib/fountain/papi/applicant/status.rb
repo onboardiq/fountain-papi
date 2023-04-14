@@ -25,6 +25,9 @@ module Fountain
         attribute? :external_id, Types::UUID.optional
         attribute? :show_redo, Types::Params::Bool.optional
         attribute? :status_type, Types::Strict::String.optional
+
+        # config override attributes:
+        attribute? :partner_id, Types::UUID.optional
       end
     end
   end

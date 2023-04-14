@@ -34,18 +34,34 @@ describe Fountain::Papi::Config do
     expect(Fountain::Papi.config.sandbox).to eq(false)
   end
 
-  it "returns the correct sandbox base_uri" do
-    Fountain::Papi.configure do |c|
-      c.partner_id = partner_id
-    end
-
-    expect(Fountain::Papi.config.base_uri).to eq("https://partners-sandbox.fountain.com/v1/partners/#{partner_id}")
-  end
-
   it "returns the proper API headers" do
     Fountain::Papi.configure { |c| c.api_key = api_key }
 
     expect(Fountain::Papi.config.headers).to include("Content-Type" => "application/json", "X-ACCESS-TOKEN" => api_key)
+  end
+
+  describe "#base_uri" do
+    context "when no partner_id is specified" do
+      it "returns the correct sandbox base_uri" do
+        Fountain::Papi.configure do |c|
+          c.partner_id = partner_id
+        end
+
+        expect(Fountain::Papi.config.base_uri).to eq("https://partners-sandbox.fountain.com/v1/partners/#{partner_id}")
+      end
+    end
+
+    context "when a partner_id is specified" do
+      let(:new_partner_id) { SecureRandom.uuid }
+
+      it "returns the correct sandbox base_uri" do
+        Fountain::Papi.configure do |c|
+          c.partner_id = partner_id
+        end
+
+        expect(Fountain::Papi.config.base_uri(override_partner_id: new_partner_id)).to eq("https://partners-sandbox.fountain.com/v1/partners/#{new_partner_id}")
+      end
+    end
   end
 
   context "when no version specified" do

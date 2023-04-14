@@ -15,8 +15,9 @@ module Fountain
         end
 
         def call
+          uri = Fountain::Papi.config.base_uri(override_partner_id: status.partner_id)
           response = Client.post(
-            "#{Fountain::Papi.config.base_uri}/applicants/#{status.applicant_id}/status",
+            "#{uri}/applicants/#{status.applicant_id}/status",
             body: { applicant: { partner_status: status } }.to_json,
             headers: Fountain::Papi.config.headers
           )
