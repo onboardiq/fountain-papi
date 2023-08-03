@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fountain-papi (1.1.0)
+    fountain-papi (1.1.1)
       dry-struct (~> 1.4)
       httparty (>= 0.20, < 0.22)
 
@@ -84,7 +84,7 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    zeitwerk (2.6.7)
+    zeitwerk (2.6.11)
 
 PLATFORMS
   arm64-darwin-21
