@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   spec.add_dependency "dry-struct", "~> 1.4"
-  spec.add_dependency "httparty", "~> 0.20.0"
+  spec.add_dependency "httparty", ">= 0.20", "< 0.22"
 
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rspec", "~> 3.0"

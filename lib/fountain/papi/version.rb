@@ -2,6 +2,6 @@
 
 module Fountain
   module Papi
-    VERSION = "1.1.0"
+    VERSION = "1.1.3"
   end
 end
